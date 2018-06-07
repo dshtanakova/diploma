@@ -18,6 +18,11 @@ class Cable(models.Model):
     def __unicode__(self):
         return self.cable_mark
 
+    def __str__(self):
+
+        return '{0}, {1}, {2}, {3}, {4}, {5}, {6}'.format(self.cable_mark, self.destination_to, \
+                                                          self.destination_from, self.status, self.cross_section, self.lenght)
+
 
 class Panel(models.Model):
     panel_name = models.CharField(max_length=30)

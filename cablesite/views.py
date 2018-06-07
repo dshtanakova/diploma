@@ -10,10 +10,7 @@ from .forms import *
 def home (request):
     form = CableForm(request.POST or None)
 
-    if request.method == "POST":
-        print(request.POST)
-        print(form.cleaned_data())
-    return render(request,"home.html",{})
+    return render(request,"cable.html",{form: form})
 
 class CreateCableModel(CreateView):
     model = Cable
