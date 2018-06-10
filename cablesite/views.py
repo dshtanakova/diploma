@@ -8,9 +8,12 @@ from .forms import *
 # Create your views here.
 
 def home (request):
-    form = CableForm(request.POST or None)
 
-    return render(request,"cable.html",{form: form})
+    return render(request,"home.html")
+
+def cable_view(request, pk):
+    cable = Cable.objects.get(pk=pk)
+    return render(request, 'cable.html', {'cable': cable})
 
 class CreateCableModel(CreateView):
     model = Cable
