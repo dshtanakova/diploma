@@ -6,7 +6,7 @@ class User(models.Model):
 
     def __str__(self):
         return self.login
-# Create your models here.
+
 class Cable(models.Model):
     cable_mark = models.CharField(max_length=30)
     destination_to = models.CharField(max_length=50)
@@ -16,7 +16,7 @@ class Cable(models.Model):
     lenght = models.FloatField()
 
     def __str__(self):
-        return self.cable_mark
+        return self.cable_mark, self.destination_to, self.destination_from, self.status, self.cross_section, self.lenght
 
 
 class Panel(models.Model):

@@ -20,7 +20,10 @@ from cablesite.views import *
 admin.autodiscover()
 urlpatterns = [
       url(r'^admin/',admin.site.urls, kwargs=None, name=None),
-      url(r'^home/$', home, kwargs=None, name=None),
+      url(r'^$', home, kwargs=None, name=None),
+      url(r'^home/$', HomePageView, kwargs=None, name=None),
       url(r'^cable/$', cable_view, kwargs=None, name=None),
+      url(r'^cable/$', add_cable, kwargs=None, name=None),
+      url(r'^panel/$', panel_view, kwargs=None, name=None),
 
 ]

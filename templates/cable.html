@@ -1,38 +1,51 @@
-{% load static %}<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Cable</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.main.css' %}">
-  </head>
-  <body>
-    <div class="container">
-      <ol class="breadcrumb my-4">
-        <li class="breadcrumb-item active">Cable</li>
-      </ol>
-      <table class="table">
-        <thead class="thead-inverse">
-          <tr>
-            <th>Board</th>
-            <th>Posts</th>
-            <th>Topics</th>
-            <th>Last Post</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for cable in cables %}
-            <tr>
-              <td>
-                {{ cable.cable_mark }}
-                <small class="text-muted d-block">{{ cable.lenght }}</small>
-              </td>
-              <td class="align-middle">0</td>
-              <td class="align-middle">0</td>
-              <td></td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </body>
-</html>
+{% include 'base.html' %}
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/plugins/bootstrap.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+{% block content %}
+
+<div class="table-wrapper container-fluid">
+        <table class="table table-bordered table-hover border-none">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Mark</th>
+                    <th scope="col">Destination to</th>
+                    <th scope="col">Destination from</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Cross-section</th>
+                    <th scope="col">Lenght-Cores</th>
+                    <th scope="col" class="add-wr">
+                        <button class="btn btn-primary add"><i class="fas fa-plus-circle"></i> Add new</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cable in cables %}
+                <tr>
+                    <th scope="row" class="rowNum">{{ cable.id }}</th>
+                    <td class="data">{{ cable.cable_mark }}</td>
+                    <td class="data">{{ cable.destination_to }}</td>
+                    <td class="data">{{ cable.destination_from }}</td>
+                    <td class="data">{{ cable.status }}</td>
+                    <td class="data">{{ cable.cross_section }}</td>
+                    <td class="data">{{ cable.length }}</td>
+                    <td class="operations-wr">
+                    </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+</div>
+<body class="container">
+<form method="post" action="">
+    {{ formset }}
+</form>
+
+
+</body>
+
+
+{% endblock content %}

@@ -3,3 +3,11 @@
 
 <link rel="stylesheet" type="text/css" href="{% static "css/plugins/bootstrap.min.css" %}" />
 <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+
+{% for row in panel|columns:2 %}
+ <tr>
+    {% for item in row %}
+        <td>{{ item }}</td>
+    {% endfor %}
+ </tr>
+{% endfor %}
